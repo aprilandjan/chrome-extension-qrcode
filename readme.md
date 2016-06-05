@@ -1,5 +1,5 @@
 # chrome-extension-qrcode
-![icon](./src/logo.png)
+![icon](https://github.com/aprilandjan/chrome-extension-qrcode/blob/master/src/logo.png)
 
 ### Description
 
