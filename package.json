@@ -1,0 +1,21 @@
+{
+  "name": "chrome-extension-qrcode",
+  "version": "1.0.0",
+  "description": "translate localhost url into ip url, and generate QR Code",
+  "scripts": {
+    "build": "node cp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aprilandjan/chrome-extension-qrcode.git"
+  },
+  "author": "May",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aprilandjan/chrome-extension-qrcode/issues"
+  },
+  "homepage": "https://github.com/aprilandjan/chrome-extension-qrcode#readme",
+  "dependencies": {
+    "shelljs": "^0.7.0"
+  }
+}

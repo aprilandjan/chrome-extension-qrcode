@@ -1,12 +1,12 @@
 {
-  "name": "MyQRCode",
+  "name": "QR Code",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "QRCode Generator",
+  "description": "translate localhost url into ip url, and generate QR Code",
   "icons": {
-    "128": "images/logo_128.png",
-    "16": "images/logo_16.png",
-    "48": "images/logo_48.png"
+    "16": "images/logo16.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
   },
   "browser_action": {
     "default_icon": "logo.png",

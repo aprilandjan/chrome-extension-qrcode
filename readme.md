@@ -1,7 +1,15 @@
-### 生成当前页面的二维码
+# chrome-extension-qrcode
+![icon](./src/logo.png)
 
-### workflow
-- chrome-设置-扩展程序-打包扩展程序
-- 选择该目录，打包扩展程序
-- 返回chrome设置，加载已解压的扩展程序
-- 选择该目录, done
+### Description
+
+translate localhost url into ip url([stackoverflow](http://stackoverflow.com/questions/18572365/get-local-ip-of-a-device-in-chrome-extension)), and generate QR Code
+
+### Manual Installation
+
+1. Clone this repo
+2. `npm install`
+3. `npm run build`
+4. Open Chrome extension page
+5. Check "developer mode"
+6. Click "load unpacked extension", and choose `build/chrome`.
