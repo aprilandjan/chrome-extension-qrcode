@@ -45,7 +45,7 @@ function getLocalIP(ips){
         }
     }
 
-    return '';
+    return ips[0];
 }
 
 //  选中小图标
