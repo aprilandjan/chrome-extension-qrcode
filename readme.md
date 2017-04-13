@@ -19,4 +19,4 @@ translate localhost url into ip url([stackoverflow](http://stackoverflow.com/que
 #### 2017/04/12
 
 - toggle translate URL or not
-- copy to clipboard on focus
+- auto select on focus
