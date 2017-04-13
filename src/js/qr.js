@@ -1,13 +1,4 @@
-﻿jQuery(function(){
-	$("#btn_gen").live("click",function(){
-		jQuery('#qrDiv').html("");
-		jQuery('#qrDiv').qrcode({
-			text	: $("#qr_website").val()	//根据辞串生成第一个二维码
-		});
-	});
-});
-
-function getLocalIPs(callback) {
+﻿function getLocalIPs(callback) {
     var ips = [];
 
     var RTCPeerConnection = window.RTCPeerConnection ||
@@ -48,33 +39,55 @@ function getLocalIP(ips){
     return ips[0];
 }
 
+var currentTab
+var rawUrl
+var rawTitle
+var ipUrl
+
+function createQRCode (url) {
+    $('#qrUrl').val(url)
+    $('#qrDiv').html('').qrcode({
+        text: url,
+        width: 160,
+        height: 160
+    })
+}
+
+function addFocusSelect (selector) {
+    $(selector).focus(function () {
+        $(this).select()
+    }).mouseup(function (e) {
+        e.preventDefault()
+    })
+}
+
+function updateQR () {
+    createQRCode(useTranslate ? ipUrl : rawUrl)
+}
+
+var storageKeyUseTranslate = 'qrcode-option-use-translate'
+var useTranslate = localStorage.getItem(storageKeyUseTranslate) === 'true'
+$('#useTranslate').prop('checked', useTranslate) 
+$('#useTranslate').on('change', e => {
+    useTranslate = e.currentTarget.checked
+    localStorage.setItem(storageKeyUseTranslate, useTranslate)
+    updateQR()
+})
+
+addFocusSelect('#qrTitle')
+addFocusSelect('#qrUrl')
+
 //  选中小图标
-chrome.tabs.getSelected(null,function(w){
-
-    var url = w.url;
-
-    //  localhost
-    if(url.indexOf('http://localhost') == 0){
-        getLocalIPs(function(ips){
-            var ip = this.getLocalIP(ips);
-            url = url.replace('http://localhost', 'http://' + ip);
-
-            jQuery('#qrDiv').qrcode({
-                text	: url,
-                width:"160",
-                height:"160"
-            });
-            $("#qr_webname").val(w.title);
-            $("#qr_website").val(url);
-        })
-    }
-    else{
-        jQuery('#qrDiv').qrcode({
-            text	: w.url,
-            width:"160",
-            height:"160"
-        });
-        $("#qr_webname").val(w.title);
-        $("#qr_website").val(w.url);
-    }
-});
+chrome.tabs.getSelected(null, function (tab) {
+    currentTab = tab
+    ipUrl = rawUrl = tab.url
+    rawTitle = tab.title
+    $('#qrTitle').val(rawTitle)
+    $('#qrUrl').val(rawUrl)
+    getLocalIPs(function (ips) {
+        var ip = getLocalIP(ips)
+        ipUrl = rawUrl.replace('http://localhost', 'http://' + ip)
+        ipUrl = ipUrl.replace('http://127.0.0.1', 'http://' + ip)
+        updateQR()
+    })
+})

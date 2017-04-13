@@ -13,3 +13,10 @@ translate localhost url into ip url([stackoverflow](http://stackoverflow.com/que
 4. Open Chrome extension page
 5. Check "developer mode"
 6. Click "load unpacked extension", and choose `build/chrome`.
+
+### Update
+
+#### 2017/04/12
+
+- toggle translate URL or not
+- copy to clipboard on focus

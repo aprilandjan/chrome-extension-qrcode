@@ -2,24 +2,118 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	
+	<title>QR CODE GENERATOR</title>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.qrcode.js"></script>
 	<script src="js/qrcode.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			font-size: 14px;
+			font-family: 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', 'Avenir Next', SimSun, Arial, sans-serif;
+			font-size: 0.28rem;
+			line-height: 1.4;
+			-webkit-font-smoothing: antialiased;
+			color: #4B4B4B;
+		}
+
+		#app {
+			padding: 10px;
+		}
+
+		span {
+			padding-right: 15px;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+
+		.clearfix::after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+
+		.pull-left {
+			float: left;
+		}
+
+		.pull-right {
+			float: right;
+		}
+
+		.qr {
+			width: 160px;
+			height: 160px;
+			border: 1px solid #cccccc;
+			margin: 5px auto;
+		}
+
+		.line {
+			padding: 2px 0;
+		}
+
+		.info {
+			margin-bottom: 30px;
+		}
+
+		label {
+			display: block;
+		}
+
+		.text-input {
+			display: block;
+			width: 100%;
+		}
+
+		.option {
+			text-align: center;
+		}
+
+		.checkbox {
+			margin-right: 5px;
+		}
+	</style>
 </head>
 <body>
-    <div id="qr_content"></div>
-	<table style="width:400px">
-		<tr>
-			<td><div id="qrDiv" style="width:160px;height:160px;"></div><p style="font-size:13px;margin-left:20%;">QR Code</p></td>
-			<td style="font-size:13px;">
-			
-			 <p>Title:<input id="qr_webname"></p>
-			 <p>URL:<input id="qr_website"></p>
-			</td>
-		</tr>
-	</table>
+	<div id="app">
+		<table style="width:400px">
+			<tr>
+				<td style="width: 180px;">
+					<div class="qr" id="qrDiv"></div>
+					<p class="text-center">QR Code</p>
+				</td>
+				<td>
+					<div class="info">
+						<div class="line clearfix">
+							<div class="label">TITLE</div>
+							<div>
+								<input class="text-input" id="qrTitle">
+							</div>
+						</div>
+						<div class="line clearfix">
+							<div class="label">URL</div>
+							<div>
+								<input class="text-input" id="qrUrl">
+							</div>
+						</div>
+					</div>
+
+					<div class="option">
+						<div>
+							<label><input class="checkbox" type="checkbox" id="useTranslate"></input>Localhost -> IP</label>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<script src="js/qr.js"></script>
 </body>
 </html>
